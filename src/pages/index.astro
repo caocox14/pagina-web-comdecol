@@ -1,0 +1,67 @@
+---
+import '../styles/global.css';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <!-- HERO CON FONDO DIFERENCIADO -->
+  <section class="relative text-center py-16 sm:py-20 px-4 overflow-hidden">
+
+    <!-- Fondo solo para móvil -->
+    <div
+      class="absolute inset-0 bg-[url('/image/background-movil.jpg')] bg-cover bg-center sm:hidden"
+    ></div>
+
+    <!-- Fondo solo para escritorio -->
+    <div
+      class="absolute inset-0 bg-[url('/image/background.jpg')] bg-cover bg-center hidden sm:block"
+    ></div>
+
+    <!-- Capa blanca con desenfoque suave encima del fondo -->
+    <div class="absolute inset-0 bg-white/60"></div>
+
+    <!-- CONTENIDO HERO -->
+    <div class="relative z-10">
+      <h1 class="text-3xl sm:text-3xl md:text-5xl font-bold mb-4 sm:mb-6 text-red-600 leading-tight">
+        Bienvenido a <span class="block">COMDECOL TP</span>
+      </h1>
+
+    <p class="text-base sm:text-lg md:text-xl text-gray-600 max-w-xl mx-auto mb-6 sm:mb-10">
+      Distribuimos los mejores snacks, bebidas y dulces del mercado.<br />
+      Calidad, sabor y confianza en cada entrega.
+    </p>
+
+      <a
+        href="/productos"
+        class="inline-block bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full text-base sm:text-lg transition mb-10 sm:mb-20 shadow-lg"
+      >
+        Ver catálogo
+      </a>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DE TARJETAS -->
+  <section class="text-center py-10 sm:py-16 px-4 bg-gray-100">
+    <h2 class="text-2xl sm:text-3xl font-semibold mb-6 sm:mb-8 text-red-600">Nuestros Productos</h2>
+    <div class="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+      <!-- CARD 1 -->
+      <div class="bg-white p-4 sm:p-6 shadow rounded-xl hover:shadow-lg transition">
+        <img src="/image/snacks-4.png" alt="Snacks" class="mx-auto h-32 sm:h-40 object-contain mb-3 sm:mb-4" />
+        <h3 class="text-lg sm:text-xl font-semibold mb-1">Snacks</h3>
+        <a href="/snacks" class="text-red-600 hover:underline text-sm sm:text-base">Ver más</a>
+      </div>
+      <!-- CARD 2 -->
+      <div class="bg-white p-4 sm:p-6 shadow rounded-xl hover:shadow-lg transition">
+        <img src="/image/bebidas-2.png" alt="Bebidas" class="mx-auto h-32 sm:h-40 object-contain mb-3 sm:mb-4" />
+        <h3 class="text-lg sm:text-xl font-semibold mb-1">Bebidas</h3>
+        <a href="/bebidas" class="text-red-600 hover:underline text-sm sm:text-base">Ver más</a>
+      </div>
+      <!-- CARD 3 -->
+      <div class="bg-white p-4 sm:p-6 shadow rounded-xl hover:shadow-lg transition">
+        <img src="/image/dulces-2.png" alt="Dulces" class="mx-auto h-32 sm:h-40 object-contain mb-3 sm:mb-4" />
+        <h3 class="text-lg sm:text-xl font-semibold mb-1">Dulces</h3>
+        <a href="/dulces" class="text-red-600 hover:underline text-sm sm:text-base">Ver más</a>
+      </div>
+    </div>
+  </section>
+</Layout>

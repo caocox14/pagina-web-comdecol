@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const totalDulces = 6; // Cambia este número según cuántas imágenes tengas
+const folder = 'dulces'; // Cambia a 'dulces' o 'bebidas' según la página
+const images = Array.from({ length: totalDulces }, (_, i) => i + 1);
+---
+
+<Layout>
+  <section class="py-12">
+    <h1 class="text-4xl font-bold text-center text-red-600 mb-10">Catálogo de {folder.charAt(0).toUpperCase() + folder.slice(1)}</h1>
+
+    <div id="gallery" class="grid grid-cols-2 md:grid-cols-4 gap-4 px-4">
+      {images.map(index => (
+        <img
+          src={`/${folder}/dulce_${index}.jpg`}
+          alt={`${folder} ${index}`}
+          class="cursor-pointer rounded shadow hover:scale-105 transition duration-300"
+          loading="lazy"
+          data-index={index - 1}
+          data-src={`/${folder}/dulce_${index}.jpg`}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="image-modal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 px-4 hidden">
+    <button id="close-modal" class="hidden sm:block absolute top-2 right-2 sm:top-4 sm:right-4 text-white text-3xl font-bold z-50">×</button>
+    <button id="prev-btn" class="hidden sm:block absolute left-2 sm:left-4 text-white text-3xl font-bold z-50">&#10094;</button>
+
+    <img
+      id="modal-image"
+      src=""
+      alt="Imagen ampliada"
+      class="max-h-[85vh] max-w-[90vw] sm:max-h-[90vh] sm:max-w-full rounded-lg shadow-lg z-40"
+    />
+
+    <button id="next-btn" class="hidden sm:block absolute right-2 sm:right-4 text-white text-3xl font-bold z-50">&#10095;</button>
+  </div>
+
+  <script type="module" src="/js/modalCatalog.js"></script>
+</Layout>

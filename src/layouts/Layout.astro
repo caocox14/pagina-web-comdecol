@@ -1,0 +1,87 @@
+---
+// src/layouts/Layout.astro
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>COMDECOL TP S.A.S</title>
+  </head>
+  <body class="bg-gray-200 text-gray-800 relative min-h-screen">
+    <header class="bg-white shadow-md relative z-50">
+      <nav class="container mx-auto p-4 flex items-center justify-between">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a href="/">
+            <img src="/image/Logo.png" alt="Logo" class="h-10 sm:h-12 md:h-14 lg:h-16" />
+          </a>
+        </div>
+
+        <!-- Desktop Menu -->
+      <ul class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 gap-10 text-base font-semibold tracking-wide text-gray-700">
+        <li><a href="/" class="hover:text-red-600 transition-colors">Inicio</a></li>
+        <li><a href="/productos" class="hover:text-red-600 transition-colors">Productos</a></li>
+      </ul>
+
+      <!-- Botón hamburguesa -->
+      <div class="md:hidden">
+        <button id="menu-btn" class="flex flex-col gap-1 w-6 h-6 focus:outline-none">
+          <span class="bg-gray-800 h-0.5 w-full transition-transform duration-300 origin-center"></span>
+          <span class="bg-gray-800 h-0.5 w-full transition-opacity duration-300"></span>
+          <span class="bg-gray-800 h-0.5 w-full transition-transform duration-300 origin-center"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Menú móvil -->
+    <div id="mobile-menu" class="md:hidden hidden bg-white shadow-md px-6 py-6 space-y-4 text-lg font-semibold text-gray-700 text-center">
+      <a href="/" class="block hover:text-red-600 transition-colors">Inicio</a>
+      <a href="/productos" class="block hover:text-red-600 transition-colors">Productos</a>
+    </div>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="bg-white text-center py-4 shadow-inner">
+    <p class="text-sm">&copy; 2025 COMDECOL TP S.A.S. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Botón flotante de WhatsApp -->
+  <a
+    href="https://wa.me/573001112233"
+    target="_blank"
+    class="fixed bottom-4 right-4 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition"
+  >
+    <img src="/image/WhatsApp-icon.svg" alt="WhatsApp" class="h-6 w-6" />
+  </a>
+</body>
+
+
+  <script type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+const menuBtn = document.getElementById('menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const bars = menuBtn?.querySelectorAll('span');
+let open = false;
+
+if (menuBtn && mobileMenu && bars.length === 3) {
+    menuBtn.addEventListener('click', () => {
+    open = !open;
+    mobileMenu.classList.toggle('hidden');
+
+    // Toggle animation classes for the "X"
+    bars[0].classList.toggle('rotate-45');
+    bars[0].classList.toggle('translate-y-1.5');
+    bars[1].classList.toggle('opacity-0');
+    bars[2].classList.toggle('-rotate-45');
+    bars[2].classList.toggle('-translate-y-1.5');
+        });
+        }
+    })
+
+  </script>
+</html>

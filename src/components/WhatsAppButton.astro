@@ -1,0 +1,12 @@
+---
+// src/components/WhatsAppButton.astro
+const phoneNumber = '57XXXXXXXXXX'; // Reemplaza con el número real
+---
+<a
+  href={`https://wa.me/${phoneNumber}`}
+  class="fixed bottom-4 right-4 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <img src="/image/WhatsApp-icon.svg" alt="WhatsApp" class="w-6 h-6" />
+</a>
